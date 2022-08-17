@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace App
 {
-    public interface Engine
+    public interface IEngine
     {
         void TurnOnTheEngine();
     }
-    class SmallEngine : Engine
+    class SmallEngine : IEngine
     {
         public void TurnOnTheEngine()
         {
@@ -18,7 +18,7 @@ namespace App
         }
     }
 
-    class BigEngine : Engine
+    class BigEngine : IEngine
     {
         public void TurnOnTheEngine()
         {
@@ -28,11 +28,19 @@ namespace App
 
     public class Automobile
     {
-        private Engine _engine;
-        public Automobile(Engine engine)
+        private IEngine _engine;
+        //public Automobile(IEngine engine)
+        //{
+        //    this._engine = engine;
+        //}
+        public IEngine Engine
         {
-            this._engine = engine;
+            set
+            {
+                this._engine = value;
+            }
         }
+
         public void TurnOn()
         {
             _engine.TurnOnTheEngine();

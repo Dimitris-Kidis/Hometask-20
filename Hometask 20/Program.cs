@@ -28,11 +28,22 @@ namespace App
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("---- Dependency Injection ----");
 
-            Automobile carOne = new Automobile(new SmallEngine());
-            Automobile carTwo = new Automobile(new BigEngine());
-            carOne.TurnOn();
-            carTwo.TurnOn();
+            //Automobile carOne = new Automobile(new SmallEngine());
+            //Automobile carTwo = new Automobile(new BigEngine());
+            // carOne.TurnOn();
+            // carTwo.TurnOn();
 
+            Automobile carOne = new Automobile();
+            IEngine engineOne = new SmallEngine();
+
+            Automobile carTwo = new Automobile();
+            IEngine engineTwo = new BigEngine();
+
+            carOne.Engine = engineOne;
+            carOne.TurnOn();
+
+            carTwo.Engine = engineTwo;
+            carTwo.TurnOn();
         }
     }
 }
